@@ -1,5 +1,5 @@
-@import "tailwindcss/preflight";
-@tailwind utilities;
+@import "tailwindcss";
+
 
 /* custom */
 :root {
@@ -9,7 +9,7 @@
 
 /* subtle global background similar to your reference (soft rounded container feel) */
 body {
-  @apply bg-linear-to-b from-[#eef3f9] to-[#e8eef6] min-h-screen font-sans;
+  @apply bg-gradient-to-b from-[#eef3f9] to-[#e8eef6] min-h-screen font-sans;
 }
 
 /* glass-like panel */
