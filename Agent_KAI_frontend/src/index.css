@@ -1,0 +1,31 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+/* custom */
+:root {
+  --bg-top: #f4f7fb;
+  --bg-bottom: #dfe7ef;
+}
+
+/* subtle global background similar to your reference (soft rounded container feel) */
+body {
+  @apply bg-linear-to-b from-[#eef3f9] to-[#e8eef6] min-h-screen font-sans;
+}
+
+/* glass-like panel */
+.panel-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+/* center scrollbars */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.12);
+  border-radius: 999px;
+}
