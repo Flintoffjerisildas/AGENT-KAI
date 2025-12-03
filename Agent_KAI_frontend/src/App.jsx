@@ -4,24 +4,25 @@ import ChatWindow from "./components/ChatWindow";
 import FileUpload from "./components/FileUpload";
 import SidePannel from "./components/SidePannel";
 import LandingPage from "./components/LandingPage";
-import ThemeToggle from "./components/ThemeToggle";
+import SettingsPage from "./components/SettingsPage";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="flex h-screen w-full bg-gray-50 overflow-hidden">
+      <div className="flex h-screen w-full bg-gray-50 dark:bg-gray-900 overflow-hidden">
         <SidePannel />
 
         <main className="flex-1 flex flex-col relative overflow-hidden">
           {/* 🌗 Theme Toggle - positioned top right */}
-          <div className="absolute top-4 right-6 z-50">
+          {/* <div className="absolute top-4 right-6 z-50">
             <ThemeToggle />
-          </div>
+          </div> */}
 
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/chat" element={<ChatWindow />} />
             <Route path="/FileUpload" element={<FileUpload />} />
+            <Route path="/settings" element={<SettingsPage />} />
           </Routes>
         </main>
       </div>
