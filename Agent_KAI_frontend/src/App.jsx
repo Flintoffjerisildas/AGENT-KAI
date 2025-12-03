@@ -5,6 +5,7 @@ import FileUpload from "./components/FileUpload";
 import SidePannel from "./components/SidePannel";
 import LandingPage from "./components/LandingPage";
 import SettingsPage from "./components/SettingsPage";
+import Pricing from "./components/Pricing";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="/chat" element={<ChatWindow />} />
             <Route path="/FileUpload" element={<FileUpload />} />
             <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/pricing" element={<Pricing />} />
           </Routes>
         </main>
       </div>

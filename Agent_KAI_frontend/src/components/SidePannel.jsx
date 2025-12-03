@@ -148,10 +148,10 @@ export default function SidePannel() {
 
             {/* Bottom */}
             <div className="mt-auto p-4 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-1">
-                <button className={`flex items-center gap-3 p-3 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all ${isCollapsed ? 'justify-center' : ''}`} title={isCollapsed ? "Plans" : ""}>
+                <Link to= '/pricing' className={`flex items-center gap-3 p-3 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all ${isCollapsed ? 'justify-center' : ''}`} title={isCollapsed ? "Plans" : ""}>
                     <Crown size={20} />
                     {!isCollapsed && "Plans"}
-                </button>
+                </Link>
 
                 <Link to= '/settings' className={`flex items-center gap-3 p-3 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all ${isCollapsed ? 'justify-center' : ''}`} title={isCollapsed ? "Settings" : ""}>
                     <Settings size={20} />
