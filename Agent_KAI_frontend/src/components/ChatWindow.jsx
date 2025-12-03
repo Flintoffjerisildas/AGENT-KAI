@@ -220,7 +220,7 @@ export default function ChatWindow() {
                         <div className="w-20 h-20 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-3xl flex items-center justify-center mb-6 shadow-lg rotate-3 transform hover:rotate-0 transition-transform duration-500">
                             <span className="text-4xl">🤖</span>
                         </div>
-                        <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                        <h3 className="text-3xl font-bold text-gray-800 mb-2 dark:text-gray-200">
                             Hello! I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Agent KAI</span>
                         </h3>
                         <p className="text-gray-500 max-w-md mx-auto leading-relaxed mb-8">
