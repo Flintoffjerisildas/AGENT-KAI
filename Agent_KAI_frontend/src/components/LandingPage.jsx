@@ -39,13 +39,13 @@ const LandingPage = () => {
                                 Kai is meant to simplify day-to-day work, reduce repetitive tasks, and provide quick access to information. With Kai handling routine processes, teams can focus on more important work, make faster decisions, and improve overall productivity.
                             </p>
                             <p className="text-gray-600 dark:text-gray-200 leading-relaxed">
-                                Kai’s is set to expand its expertise to provide a better and efficient 24 x 7 Customer Interaction Experience, for our clients and partners across the geographical boundaries.
+                                Kai is set to expand its expertise to provide a better and efficient 24 x 7 Customer Interaction Experience, for our clients and partners across the geographical boundaries.
                             </p>
                         </div>
                         <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 border border-gray-100 animate-slideLeft hover:shadow-lg transition-shadow duration-300" style={{ animationDelay: '0.4s' }}>
                             {/* Placeholder for an image or illustration */}
                             <div className="aspect-video bg-gradient-to-tr from-blue-100 to-cyan-50 rounded-xl flex items-center justify-center text-blue-300 transform hover:scale-105 transition-transform duration-500">
-                            <img src="https://cdn.prod.website-files.com/63974a9c19a1dd54281c47a8/64d0b5970be523e3ea00fe44_AI-Agents.webp" alt="AI Agents" size={64} />
+                                <img src="https://cdn.prod.website-files.com/63974a9c19a1dd54281c47a8/64d0b5970be523e3ea00fe44_AI-Agents.webp" alt="AI Agents" className="w-full h-full object-cover rounded-xl" />
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ const LandingPage = () => {
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-200 mb-3">Onboarding & Recruitment</h3>
                             <p className="text-gray-600 dark:text-gray-200 text-sm leading-relaxed">
-                                Automates candidate screening, shortlists suitable candidates, schedules interviews, and assists in preparing offer letters.
+                                Automates candidate screening, shortlists suitable candidates, schedules interviews, and assists in preparing offer letters. This ensures a smooth and efficient hiring process.
                             </p>
                         </div>
 
@@ -78,7 +78,7 @@ const LandingPage = () => {
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-200 mb-3">Employee Support</h3>
                             <p className="text-gray-600 dark:text-gray-200 text-sm leading-relaxed">
-                                Handles leave applications, salary queries, payslips, and provides quick guidance on HR policies. Employees get instant support.
+                                Handles leave applications, salary queries, payslips, and provides quick guidance on HR policies. Employees get instant support, reducing delays and HR workload.
                             </p>
                         </div>
 
@@ -88,7 +88,7 @@ const LandingPage = () => {
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-200 mb-3">Performance & Learning</h3>
                             <p className="text-gray-600 dark:text-gray-200 text-sm leading-relaxed">
-                                Tracks individual and team goals, collects feedback from managers, and recommends learning and training opportunities.
+                                Tracks individual and team goals, collects feedback from managers, and recommends learning and training opportunities based on employee development needs.
                             </p>
                         </div>
                     </div>

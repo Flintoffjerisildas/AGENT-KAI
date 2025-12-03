@@ -224,27 +224,26 @@ export default function ChatWindow() {
                             Hello! I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Agent KAI</span>
                         </h3>
                         <p className="text-gray-500 max-w-md mx-auto leading-relaxed mb-8">
-                            I can help you analyze resumes, answer questions, or assist with HR tasks.
-                            Try uploading a document or just say hi!
+                            Your Talent Intelligence Agent. I can help with Onboarding, Employee Support, and Performance Tracking.
                         </p>
 
                         {/* 🌟 STARTER CARDS */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl px-4">
                             {[
                                 {
-                                    icon: "📄",
-                                    title: "Analyze Resume",
-                                    text: "Can you analyze my resume and suggest improvements?"
+                                    icon: "📝",
+                                    title: "Onboarding",
+                                    text: "Draft an offer letter for a Senior Developer."
                                 },
                                 {
-                                    icon: "💼",
-                                    title: "Interview Prep",
-                                    text: "Help me prepare for a software engineer interview."
+                                    icon: "💬",
+                                    title: "Employee Support",
+                                    text: "How do I apply for paternity leave?"
                                 },
                                 {
-                                    icon: "✨",
-                                    title: "Capabilities",
-                                    text: "What can you do to help me with my job search?"
+                                    icon: "📈",
+                                    title: "Performance",
+                                    text: "Suggest goals for a Q3 marketing review."
                                 }
                             ].map((card, idx) => (
                                 <button
