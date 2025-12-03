@@ -71,7 +71,7 @@ export default function FileUpload() {
   return (
     <div className="max-w-2xl mx-auto mt-10 px-4">
       <div
-        className={`bg-white shadow-xl rounded-3xl p-8 border-2 transition-all duration-300 ${isDragging ? "border-blue-500 bg-blue-50 scale-102" : "border-gray-100 hover:border-blue-200"
+        className={`bg-white dark:bg-gray-800 shadow-xl rounded-3xl p-8 border-2 transition-all duration-300 ${isDragging ? "border-blue-500 bg-blue-50 scale-102" : "border-gray-100 hover:border-blue-200"
           }`}
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
@@ -81,10 +81,10 @@ export default function FileUpload() {
           <div className={`w-16 h-16 mx-auto bg-blue-50 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 ${isDragging ? "scale-110" : ""}`}>
             <UploadCloud className="text-blue-600" size={32} />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
             Upload Document(s)
           </h2>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-300">
             Drag & drop files here, or click to select files
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function FileUpload() {
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
             multiple
           />
-          <div className="w-full border-2 border-dashed border-gray-300 rounded-xl p-8 text-center group-hover:border-blue-400 group-hover:bg-blue-50/50 transition-all">
+          <div className="w-full border-2 border-dashed border-gray-300 rounded-xl p-8 text-center group-hover:border-blue-400 group-hover:bg-blue-50/50 dark:border-gray-700 dark:hover:bg-gray-700 dark:hover:border-gray-700 transition-all">
             <span className="text-blue-600 font-medium">Browse Files</span>
             <span className="text-gray-400 mx-2">|</span>
             <span className="text-gray-500 text-sm">Supported formats: PDF, DOC, DOCX</span>
@@ -107,10 +107,10 @@ export default function FileUpload() {
         {/* Show selected files */}
         {files.length > 0 && (
           <div className="mt-6 space-y-3 animate-fadeIn">
-            <p className="font-medium text-gray-700 text-sm">Selected Files ({files.length})</p>
-            <div className="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden max-h-48 overflow-y-auto">
+            <p className="font-medium text-gray-700 text-sm dark:text-gray-300">Selected Files ({files.length})</p>
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden max-h-48 overflow-y-auto">
               {files.map((file, i) => (
-                <div key={i} className="flex items-center justify-between p-3 border-b last:border-0 border-gray-100 hover:bg-white transition-colors">
+                <div key={i} className="flex items-center justify-between p-3 border-b last:border-0 border-gray-100 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700 transition-colors">
                   <div className="flex items-center gap-3 overflow-hidden">
                     <FileText size={18} className="text-blue-500 shrink-0" />
                     <span className="text-sm text-gray-700 truncate">{file.name}</span>
@@ -131,11 +131,11 @@ export default function FileUpload() {
         {/* Progress Bar */}
         {uploadStatus === "uploading" && (
           <div className="mt-6">
-            <div className="flex justify-between text-xs font-medium text-gray-500 mb-1">
+            <div className="flex justify-between text-xs font-medium text-gray-500 dark:text-gray-300 mb-1">
               <span>Uploading...</span>
               <span>{progress}%</span>
             </div>
-            <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+            <div className="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
               <div
                 className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${progress}%` }}
