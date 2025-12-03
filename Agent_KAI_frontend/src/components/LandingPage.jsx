@@ -6,7 +6,7 @@ const LandingPage = () => {
     return (
         <div className="flex-1 h-screen overflow-y-auto bg-white dark:bg-gray-900 shadow-sm relative scroll-smooth">
             {/* Hero Section */}
-            <section className="relative overflow-hidden h-screen pt-20 pb-16 px-8 md:px-16 animate-fadeIn">
+            <section className="relative overflow-hidden h-screen pt-20 pb-16 px-8 md:px-16">
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-50 to-white -z-10 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"></div>
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 font-medium text-sm animate-slideDown">

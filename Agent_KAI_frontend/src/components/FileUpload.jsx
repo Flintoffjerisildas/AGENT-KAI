@@ -98,9 +98,9 @@ export default function FileUpload() {
             multiple
           />
           <div className="w-full border-2 border-dashed border-gray-300 rounded-xl p-8 text-center group-hover:border-blue-400 group-hover:bg-blue-50/50 dark:border-gray-700 dark:hover:bg-gray-700 dark:hover:border-gray-700 transition-all">
-            <span className="text-blue-600 font-medium">Browse Files</span>
+            <span className="text-blue-600 font-medium dark:text-blue-400">Browse Files</span>
             <span className="text-gray-400 mx-2">|</span>
-            <span className="text-gray-500 text-sm">Supported formats: PDF, DOC, DOCX</span>
+            <span className="text-gray-500 text-sm dark:text-gray-300">Supported formats: PDF, DOC, DOCX</span>
           </div>
         </div>
 
@@ -112,9 +112,9 @@ export default function FileUpload() {
               {files.map((file, i) => (
                 <div key={i} className="flex items-center justify-between p-3 border-b last:border-0 border-gray-100 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700 transition-colors">
                   <div className="flex items-center gap-3 overflow-hidden">
-                    <FileText size={18} className="text-blue-500 shrink-0" />
-                    <span className="text-sm text-gray-700 truncate">{file.name}</span>
-                    <span className="text-xs text-gray-400 shrink-0">({(file.size / 1024).toFixed(1)} KB)</span>
+                    <FileText size={18} className="text-blue-500 dark:text-blue-400 shrink-0" />
+                    <span className="text-sm text-gray-700 dark:text-gray-300 truncate">{file.name}</span>
+                    <span className="text-xs text-gray-400 dark:text-gray-300 shrink-0">({(file.size / 1024).toFixed(1)} KB)</span>
                   </div>
                   <button
                     onClick={() => removeFile(i)}

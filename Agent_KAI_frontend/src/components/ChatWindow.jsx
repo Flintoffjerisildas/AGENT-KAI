@@ -72,13 +72,14 @@ export default function ChatWindow() {
         synthesisRef.current.speak(utterance);
     };
 
-    const sendMessage = async () => {
-        if (!value.trim()) return;
+    const sendMessage = async (directText = null) => {
+        const textToSend = typeof directText === 'string' ? directText : value;
+        if (!textToSend.trim()) return;
 
         const userMsg = {
             id: Date.now(),
             sender: "user",
-            text: value.trim(),
+            text: textToSend.trim(),
             timestamp: new Date().toISOString()
         };
 
@@ -222,10 +223,55 @@ export default function ChatWindow() {
                         <h3 className="text-3xl font-bold text-gray-800 mb-2">
                             Hello! I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Agent KAI</span>
                         </h3>
-                        <p className="text-gray-500 max-w-md mx-auto leading-relaxed">
+                        <p className="text-gray-500 max-w-md mx-auto leading-relaxed mb-8">
                             I can help you analyze resumes, answer questions, or assist with HR tasks.
                             Try uploading a document or just say hi!
                         </p>
+
+                        {/* 🌟 STARTER CARDS */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl px-4">
+                            {[
+                                {
+                                    icon: "📄",
+                                    title: "Analyze Resume",
+                                    text: "Can you analyze my resume and suggest improvements?"
+                                },
+                                {
+                                    icon: "💼",
+                                    title: "Interview Prep",
+                                    text: "Help me prepare for a software engineer interview."
+                                },
+                                {
+                                    icon: "✨",
+                                    title: "Capabilities",
+                                    text: "What can you do to help me with my job search?"
+                                }
+                            ].map((card, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => {
+                                        setValue(card.text);
+                                        // We need to wait a tick for state to update if we were using value in sendMessage directly from state,
+                                        // but sendMessage uses 'value' state. 
+                                        // Better approach: pass text directly to sendMessage or update state and call.
+                                        // Since sendMessage reads 'value' from state, let's just call a modified sendMessage or update state then call?
+                                        // Actually, standard sendMessage reads 'value'. 
+                                        // Let's modify sendMessage to accept an optional argument or just handle it here.
+                                        // For simplicity/robustness, let's just call a helper or modify sendMessage.
+                                        // Let's try updating value and then calling sendMessage? No, state update is async.
+                                        // Let's modify sendMessage to take an optional text arg.
+                                        sendMessage(card.text);
+                                    }}
+                                    className="flex flex-col items-center p-4 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-200 dark:bg-gray-800/50 dark:border-gray-700 dark:text-gray-200 transition-all duration-200 group text-left"
+                                >
+                                    <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform dark:bg-blue-600 dark:text-gray-200">
+                                        <span className="text-xl">{card.icon}</span>
+                                    </div>
+                                    <h4 className="font-semibold text-gray-800 text-sm mb-1 dark:text-gray-200">{card.title}</h4>
+                                    <p className="text-xs text-gray-500 text-center line-clamp-2 dark:text-gray-200">{card.text}</p>
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 ) : (
                     <div className="space-y-6 max-w-3xl mx-auto pb-4">
