@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-
 import {
     Home,
     Compass,
@@ -59,7 +58,7 @@ export default function SidePannel() {
             {/* Logo */}
             <div className={`flex items-center gap-3 p-6 ${isCollapsed ? 'justify-center' : ''}`}>
                 <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center shadow-sm flex-shrink-0">
-                    <img src="src/assets/kasadara_logo.png" alt="Kasadara Logo" className="w-5 h-5" />
+                    <span className="text-white font-bold text-lg">K</span>
                 </div>
                 {!isCollapsed && <h1 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white">Agent Kai</h1>}
             </div>
@@ -167,4 +166,3 @@ export default function SidePannel() {
         </div>
     );
 }
-
