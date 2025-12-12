@@ -26,20 +26,6 @@ BUCKET_NAME = "hrbotresumestorage"
 # -----------------------------
 # 📂 Upload Endpoint
 # -----------------------------
-# @app.post("/upload")
-# async def upload_file(file: UploadFile = File(...)):
-#     try:
-#         file_ext = file.filename.split('.')[-1]
-#         unique_filename = f"{uuid.uuid4()}.{file_ext}"
-
-#         # Upload file to S3
-#         s3_client.upload_fileobj(file.file, BUCKET_NAME, unique_filename)
-#         file_url = f"https://{BUCKET_NAME}.s3.amazonaws.com/{unique_filename}"
-
-#         return {"message": "File uploaded successfully", "file_url": file_url}
-
-#     except Exception as e:
-#         return {"error": str(e)}
 @app.post("/upload")
 async def upload_files(files: list[UploadFile] = File(...)):
     uploaded_files = []

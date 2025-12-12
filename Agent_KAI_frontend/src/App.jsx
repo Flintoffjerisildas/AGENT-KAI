@@ -6,6 +6,7 @@ import SidePannel from "./components/SidePannel";
 import LandingPage from "./components/LandingPage";
 import SettingsPage from "./components/SettingsPage";
 import Pricing from "./components/Pricing";
+import Discover from "./components/Discover";
 
 export default function App() {
   return (
@@ -14,17 +15,13 @@ export default function App() {
         <SidePannel />
 
         <main className="flex-1 flex flex-col relative overflow-hidden">
-          {/* 🌗 Theme Toggle - positioned top right */}
-          {/* <div className="absolute top-4 right-6 z-50">
-            <ThemeToggle />
-          </div> */}
-
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/chat" element={<ChatWindow />} />
             <Route path="/FileUpload" element={<FileUpload />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/discover" element={<Discover />} />
           </Routes>
         </main>
       </div>
