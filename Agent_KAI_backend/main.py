@@ -114,7 +114,9 @@ async def score_resumes(
             results.append({
                 "resumeName": file.filename,
                 "score": score_data.get("score", 0),
-                "summary": score_data.get("summary", "No summary provided.")
+                "summary": score_data.get("summary", "No summary provided."),
+                "strengths": score_data.get("strengths", []),
+                "weaknesses": score_data.get("weaknesses", [])
             })
             
         return {"results": results}

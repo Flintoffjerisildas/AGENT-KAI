@@ -56,7 +56,7 @@ class ScorerAgent:
         messages = [
             {
                 "role": "system",
-                "content": "You are an expert HR AI Assistant. Evaluate the resume against the job description. Return JSON only with keys: 'score' (0-100) and 'summary' (brief justification)."
+                "content": "You are an expert HR AI Assistant. Evaluate the resume against the job description. Return JSON only with keys: 'score' (0-100), 'summary' (brief justification), 'strengths' (list of 3-5 key strong points), and 'weaknesses' (list of 3-5 potential gaps or missing skills)."
             },
             {
                 "role": "user",

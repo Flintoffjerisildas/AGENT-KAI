@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Upload, X, Trophy, FileText, Loader2, Award, ClipboardList, CheckCircle2, Sparkles } from "lucide-react";
+import { Upload, X, Trophy, FileText, Loader2, Award, ClipboardList, CheckCircle2, Sparkles, MessageSquare } from "lucide-react";
 
 export default function ResumeScore() {
     const [jobDescription, setJobDescription] = useState("");
@@ -9,6 +9,7 @@ export default function ResumeScore() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [isDragging, setIsDragging] = useState(false);
+    const [selectedCandidate, setSelectedCandidate] = useState(null);
 
     const handleFileChange = (e) => {
         if (e.target.files) {
@@ -193,8 +194,8 @@ export default function ResumeScore() {
                                     onClick={handleScore}
                                     disabled={isButtonDisabled}
                                     className={`relative w-full py-4 px-6 rounded-2xl font-bold text-lg shadow-xl transition-all overflow-hidden group ${isButtonDisabled
-                                            ? "bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed"
-                                            : "bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white hover:shadow-purple-500/25 active:scale-[0.98]"
+                                        ? "bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed"
+                                        : "bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white hover:shadow-purple-500/25 active:scale-[0.98]"
                                         }`}
                                 >
                                     <div className={`absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ${isButtonDisabled ? "hidden" : ""}`} />
@@ -243,26 +244,28 @@ export default function ResumeScore() {
                                     {results
                                         .sort((a, b) => b.score - a.score)
                                         .map((result, idx) => (
-                                            <div key={idx} className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                                            <div key={idx}
+                                                onClick={() => setSelectedCandidate(result)}
+                                                className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer ring-offset-2 ring-offset-transparent focus:ring-2 focus:ring-blue-500">
                                                 {/* Header with Score */}
                                                 <div className="p-6 pb-4 relative overflow-hidden">
                                                     <div className={`absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity ${result.score >= 80 ? "text-green-500" :
-                                                            result.score >= 60 ? "text-yellow-500" : "text-red-500"
+                                                        result.score >= 60 ? "text-yellow-500" : "text-red-500"
                                                         }`}>
                                                         <Award size={100} />
                                                     </div>
 
                                                     <div className="flex justify-between items-start z-10 relative">
                                                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold shadow-sm ${idx === 0 ? "bg-gradient-to-br from-yellow-300 to-yellow-500 text-white" :
-                                                                idx === 1 ? "bg-gradient-to-br from-gray-300 to-gray-500 text-white" :
-                                                                    idx === 2 ? "bg-gradient-to-br from-orange-300 to-orange-500 text-white" :
-                                                                        "bg-gray-100 dark:bg-gray-700 text-gray-500"
+                                                            idx === 1 ? "bg-gradient-to-br from-gray-300 to-gray-500 text-white" :
+                                                                idx === 2 ? "bg-gradient-to-br from-orange-300 to-orange-500 text-white" :
+                                                                    "bg-gray-100 dark:bg-gray-700 text-gray-500"
                                                             }`}>
                                                             #{idx + 1}
                                                         </div>
                                                         <div className="flex flex-col items-end">
                                                             <span className={`text-4xl font-extrabold ${result.score >= 80 ? "text-green-500" :
-                                                                    result.score >= 60 ? "text-yellow-500" : "text-red-500"
+                                                                result.score >= 60 ? "text-yellow-500" : "text-red-500"
                                                                 }`}>
                                                                 {result.score}
                                                             </span>
@@ -283,7 +286,7 @@ export default function ResumeScore() {
                                                     <div className="h-1.5 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
                                                         <div
                                                             className={`h-full rounded-full transition-all duration-1000 ease-out ${result.score >= 80 ? "bg-green-500" :
-                                                                    result.score >= 60 ? "bg-yellow-500" : "bg-red-500"
+                                                                result.score >= 60 ? "bg-yellow-500" : "bg-red-500"
                                                                 }`}
                                                             style={{ width: `${result.score}%` }}
                                                         />
@@ -321,6 +324,108 @@ export default function ResumeScore() {
                     </div>
                 </main>
             </div>
-        </div>
+
+
+            {/* Detailed View Modal */}
+            {
+                selectedCandidate && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+                        {/* Backdrop */}
+                        <div
+                            className="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"
+                            onClick={() => setSelectedCandidate(null)}
+                        />
+
+                        {/* Modal Content */}
+                        <div className="relative w-full max-w-2xl bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-slideUp">
+                            {/* Header */}
+                            <div className="relative p-6 sm:p-8 border-b border-gray-100 dark:border-gray-700 flex items-center justify-between bg-gray-50/50 dark:bg-gray-900/50">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                                        {selectedCandidate.resumeName}
+                                    </h3>
+                                    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold ${selectedCandidate.score >= 80 ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' :
+                                        selectedCandidate.score >= 60 ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400' :
+                                            'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+                                        }`}>
+                                        <Trophy size={14} />
+                                        Match Score: {selectedCandidate.score}%
+                                    </div>
+                                </div>
+                                <button
+                                    onClick={() => setSelectedCandidate(null)}
+                                    className="p-2 bg-white dark:bg-gray-700 rounded-full text-gray-400 hover:text-gray-900 dark:hover:text-white shadow-sm hover:shadow transition-all"
+                                >
+                                    <X size={20} />
+                                </button>
+                            </div>
+
+                            {/* Scrollable Body */}
+                            <div className="overflow-y-auto p-6 sm:p-8 custom-scrollbar space-y-8">
+
+                                {/* Executive Summary */}
+                                <section>
+                                    <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                        <FileText size={16} /> Executive Summary
+                                    </h4>
+                                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+                                        {selectedCandidate.summary}
+                                    </p>
+                                </section>
+
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    {/* Strengths */}
+                                    {selectedCandidate.strengths && selectedCandidate.strengths.length > 0 && (
+                                        <section className="bg-green-50 dark:bg-green-900/10 rounded-2xl p-6 border border-green-100 dark:border-green-900/20">
+                                            <h4 className="text-green-700 dark:text-green-400 font-bold mb-4 flex items-center gap-2">
+                                                <CheckCircle2 size={20} /> Key Strengths
+                                            </h4>
+                                            <ul className="space-y-3">
+                                                {selectedCandidate.strengths.map((item, i) => (
+                                                    <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0" />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </section>
+                                    )}
+
+                                    {/* Weaknesses */}
+                                    {selectedCandidate.weaknesses && selectedCandidate.weaknesses.length > 0 && (
+                                        <section className="bg-red-50 dark:bg-red-900/10 rounded-2xl p-6 border border-red-100 dark:border-red-900/20">
+                                            <h4 className="text-red-600 dark:text-red-400 font-bold mb-4 flex items-center gap-2">
+                                                <Award size={20} className="rotate-180" /> Potential Gaps
+                                            </h4>
+                                            <ul className="space-y-3">
+                                                {selectedCandidate.weaknesses.map((item, i) => (
+                                                    <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0" />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </section>
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* Footer (Actions) */}
+                            <div className="p-6 border-t border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/50 flex justify-end gap-3">
+                                <button
+                                    onClick={() => setSelectedCandidate(null)}
+                                    className="px-5 py-2.5 rounded-xl font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                                >
+                                    Close
+                                </button>
+                                <button className="px-5 py-2.5 rounded-xl font-medium bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-500/30 transition-all flex items-center gap-2">
+                                    <MessageSquare size={18} /> Chat with Candidate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+        </div >
     );
 }
