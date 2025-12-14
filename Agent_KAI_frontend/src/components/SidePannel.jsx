@@ -12,10 +12,7 @@ import {
     MessageSquare,
     ChevronLeft,
     ChevronRight,
-<<<<<<< Updated upstream
-=======
     Trophy,
->>>>>>> Stashed changes
 } from "lucide-react";
 
 const history = [
@@ -123,14 +120,10 @@ export default function SidePannel() {
                         {(!isCollapsed || isMobile) && "Discover"}
                     </Link>
 
-<<<<<<< Updated upstream
-=======
                     <Link to="/resume-score" className={`flex items-center gap-3 p-3 rounded-xl transition-all ${isActive('/resume-score') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'} ${isCollapsed && !isMobile ? 'justify-center' : ''}`} title={isCollapsed ? "Resume Score" : ""}>
                         <Trophy size={20} />
                         {(!isCollapsed || isMobile) && "Resume Score"}
                     </Link>
-
->>>>>>> Stashed changes
                     <button className={`flex items-center gap-3 p-3 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all ${isCollapsed && !isMobile ? 'justify-center' : ''}`} title={isCollapsed ? "Plugins" : ""}>
                         <Boxes size={20} />
                         {(!isCollapsed || isMobile) && "Plugins"}
