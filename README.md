@@ -50,6 +50,8 @@ Before running the project, ensure you have the following installed:
 
 5.  Run the backend server:
     ```bash
+    .venv/Scripts/Activate.ps1
+
     uvicorn main:app --reload
     ```
     The server will start at `http://localhost:8000`.

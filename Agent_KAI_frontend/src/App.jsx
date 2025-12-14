@@ -7,6 +7,7 @@ import LandingPage from "./components/LandingPage";
 import SettingsPage from "./components/SettingsPage";
 import Pricing from "./components/Pricing";
 import Discover from "./components/Discover";
+import ResumeScore from "./components/ResumeScore";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/discover" element={<Discover />} />
+            <Route path="/resume-score" element={<ResumeScore />} />
           </Routes>
         </main>
       </div>

@@ -1,5 +1,5 @@
 # backend/main.py
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import boto3
@@ -79,6 +79,46 @@ async def chat(req: ChatRequest):
                 break
 
         return {"reply": result_text}
-        print(result_text)
     except Exception as e:
+        return {"error": str(e)}
+
+# -----------------------------
+# 🏆 Resume Scoring Endpoint
+# -----------------------------
+from scorer_agent import ScorerAgent
+
+scorer_agent_instance = ScorerAgent()
+
+@app.post("/score")
+async def score_resumes(
+    files: list[UploadFile] = File(...),
+    job_description: str = Form(...)
+):
+    print(f"DEBUG: Received /score request. Files: {len(files)}")
+    results = []
+    
+    try:
+        for file in files:
+            print(f"DEBUG: Processing file: {file.filename}")
+            content = await file.read()
+            # Extract text
+            resume_text = scorer_agent_instance.extract_text_from_file(content, file.filename)
+            print(f"DEBUG: Text extracted. Length: {len(resume_text)}")
+            
+            # Score logic
+            if resume_text.startswith("Error"):
+                score_data = {"score": 0, "summary": f"Failed to parse resume: {resume_text}"}
+            else:
+                score_data = scorer_agent_instance.score_resume(resume_text, job_description)
+            
+            results.append({
+                "resumeName": file.filename,
+                "score": score_data.get("score", 0),
+                "summary": score_data.get("summary", "No summary provided.")
+            })
+            
+        return {"results": results}
+
+    except Exception as e:
+        print(f"DEBUG: Endpoint Error: {e}")
         return {"error": str(e)}
